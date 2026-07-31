@@ -1,0 +1,166 @@
+/* ---------------------------------------------------------------------------
+   Shared stylesheet for every course site.
+   Edit here; build.sh copies it to _build/style.css on each build.
+   --------------------------------------------------------------------------- */
+
+:root {
+  --bg:        #ffffff;
+  --fg:        #1c1f24;
+  --muted:     #5b6470;
+  --rule:      #e2e6ea;
+  --accent:    #16507c;
+  --accent-bg: #eef4f9;
+  --measure:   42rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:        #14171a;
+    --fg:        #e6e9ec;
+    --muted:     #9aa4b0;
+    --rule:      #2b3138;
+    --accent:    #79b8e8;
+    --accent-bg: #1b2530;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        "Helvetica Neue", Arial, sans-serif;
+  -webkit-text-size-adjust: 100%;
+}
+
+.wrap {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+a { color: var(--accent); }
+a:hover { text-decoration: none; }
+
+h1, h2, h3 { line-height: 1.25; margin: 2rem 0 0.6rem; }
+h1 { font-size: 1.9rem; margin-top: 0; }
+h2 { font-size: 1.3rem; border-bottom: 1px solid var(--rule); padding-bottom: 0.3rem; }
+h3 { font-size: 1.05rem; }
+
+p, ul, ol, table { margin: 0 0 1rem; }
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+  font-size: 0.9em;
+  background: var(--accent-bg);
+  padding: 0.12em 0.35em;
+  border-radius: 3px;
+}
+
+pre {
+  background: var(--accent-bg);
+  padding: 0.9rem 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+}
+pre code { background: none; padding: 0; }
+
+/* Wide content must scroll inside itself, never the page. */
+table { width: 100%; border-collapse: collapse; display: block; overflow-x: auto; }
+th, td { text-align: left; padding: 0.5rem 0.7rem; border-bottom: 1px solid var(--rule); }
+th { font-weight: 600; }
+
+/* --- site nav ------------------------------------------------------------ */
+
+.site-nav {
+  border-bottom: 1px solid var(--rule);
+  background: var(--accent-bg);
+  margin-bottom: 2rem;
+}
+.site-nav-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 1.25rem;
+  padding-top: 0.85rem;
+  padding-bottom: 0.85rem;
+}
+.site-nav .brand {
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+.site-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.site-nav a { text-decoration: none; color: var(--muted); font-size: 0.92rem; }
+.site-nav a:hover { color: var(--accent); }
+.site-nav a.current { color: var(--fg); font-weight: 600; }
+
+/* --- cross-course homepage ----------------------------------------------- */
+
+.lede { color: var(--muted); font-size: 1.05rem; }
+
+.course-list { list-style: none; padding: 0; margin: 1.5rem 0 0; }
+.course-list li { margin-bottom: 0.75rem; }
+
+.course-card {
+  display: block;
+  padding: 0.9rem 1.1rem;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  text-decoration: none;
+  color: inherit;
+}
+.course-card:hover { border-color: var(--accent); background: var(--accent-bg); }
+.course-number { font-weight: 700; color: var(--accent); margin-right: 0.5rem; }
+.course-title  { font-weight: 600; }
+.course-blurb  { display: block; color: var(--muted); font-size: 0.92rem; margin-top: 0.2rem; }
+
+/* --- course pages -------------------------------------------------------- */
+
+.course-header { margin-bottom: 0.75rem; }
+.kicker { margin: 0 0 0.35rem; font-size: 0.85rem; letter-spacing: 0.04em; text-transform: uppercase; }
+.kicker a { text-decoration: none; }
+.page-date { margin: 0.2rem 0 0; color: var(--muted); font-size: 0.9rem; }
+
+.course-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.75rem;
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.92rem;
+}
+.course-nav a { text-decoration: none; }
+
+.lesson-list, .handout-list { list-style: none; padding: 0; }
+.lesson-list li, .handout-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+.lesson-list time { color: var(--muted); font-size: 0.88rem; white-space: nowrap; }
+
+.empty { color: var(--muted); font-style: italic; }
+
+/* --- footer -------------------------------------------------------------- */
+
+.site-footer {
+  margin-top: 3.5rem;
+  padding-top: 1rem;
+  padding-bottom: 2.5rem;
+  border-top: 1px solid var(--rule);
+  color: var(--muted);
+  font-size: 0.88rem;
+}
